@@ -180,24 +180,20 @@ window.onload = function () {
   let currentFrameIndex = -1;
 
 function updateFrame() {
-  const scrollTop = scrollEl.scrollTop;
-  const maxScroll = scrollEl.scrollHeight - window.innerHeight;
+  const scrollTop = scrollEl.scrollTop; // Current scroll position
+  const maxScroll = scrollEl.scrollHeight - window.innerHeight; // Maximum scrollable height
 
-  // Adjust the scroll speed with a multiplier
-  const speedMultiplier = 2;  // Increase this to speed up the animation, or decrease to slow it down
-  const scrollFraction = (scrollTop / maxScroll) * speedMultiplier;
+  // Ensure that the scrollFraction is proportional to the scrollable area
+  const scrollFraction = Math.min(1, scrollTop / maxScroll); // Ensure the fraction stays between 0 and 1
 
-  const index = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
+  // Calculate the index based on the scroll fraction and the total number of frames
+  const index = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames)); 
 
   if (index !== currentFrameIndex) {
     currentFrameIndex = index;
-    frameEl.src = frames[index];
-    console.log(`🖼 Frame ${index}:`, frames[index]);
+    frameEl.src = frames[index]; // Update the frame source
+    console.log(`🖼 Frame ${index}:`, frames[index]); // Debugging the frame change
   }
 
-  requestAnimationFrame(updateFrame);
-}
-
-// Start animation loop
-updateFrame();
+  requestAnimationFrame(updateFrame); // Keep updating the frame
 
