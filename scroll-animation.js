@@ -176,7 +176,7 @@ window.onload = function () {
     return;
   }
 
-  const totalFrames = frames.length;
+  const totalFrames = 163;
   let currentFrameIndex = -1;
 
 function updateFrame() {
