@@ -168,32 +168,27 @@ window.onload = function () {
 
   ];
 
-  const frameEl = document.getElementById("animation-frame");
-  const scrollEl = document.getElementById("scroll-wrapper");
+  const scrollEl = document.getElementById('scroll-wrapper'); // The scroll container
+const frameEl = document.getElementById('animation-frame'); // The img element for animation
 
-  if (!frameEl || !scrollEl) {
-    console.error("❌ Could not find animation-frame or scroll-wrapper");
-    return;
-  }
+let currentFrameIndex = 0;
+const totalFrames = 163; // Updated this to 163
 
-  const totalFrames = 163;
-  let currentFrameIndex = -1;
-
+// Function to update the frame based on scroll position
 function updateFrame() {
-  const scrollTop = scrollEl.scrollTop; // Current scroll position
-  const maxScroll = scrollEl.scrollHeight - window.innerHeight; // Maximum scrollable height
-
-  // Ensure that the scrollFraction is proportional to the scrollable area
-  const scrollFraction = Math.min(1, scrollTop / maxScroll); // Ensure the fraction stays between 0 and 1
-
-  // Calculate the index based on the scroll fraction and the total number of frames
-  const index = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames)); 
+  const scrollTop = scrollEl.scrollTop;
+  const maxScroll = scrollEl.scrollHeight - window.innerHeight;
+  const scrollFraction = scrollTop / maxScroll;
+  const index = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
 
   if (index !== currentFrameIndex) {
     currentFrameIndex = index;
-    frameEl.src = frames[index]; // Update the frame source
-    console.log(`🖼 Frame ${index}:`, frames[index]); // Debugging the frame change
+    frameEl.src = frames[index]; // Change the image source
+    console.log(`🖼 Frame ${index}:`, frames[index]); // Log the current frame
   }
 
-  requestAnimationFrame(updateFrame); // Keep updating the frame
+  requestAnimationFrame(updateFrame); // Continue updating the frame as the user scrolls
+}
 
+// Start animation loop
+updateFrame();
