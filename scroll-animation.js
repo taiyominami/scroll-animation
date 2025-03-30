@@ -23,17 +23,23 @@ window.onload = function () {
   }
 
   const totalFrames = frames.length;
-  frameEl.src = frames[0];
+  let currentFrameIndex = -1;
 
   function updateFrame() {
     const scrollTop = scrollEl.scrollTop;
     const maxScroll = scrollEl.scrollHeight - window.innerHeight;
     const scrollFraction = scrollTop / maxScroll;
     const index = Math.min(totalFrames - 1, Math.floor(scrollFraction * totalFrames));
-    frameEl.src = frames[index];
-    console.log(`🖼 Frame ${index}:`, frames[index]);
+
+    if (index !== currentFrameIndex) {
+      currentFrameIndex = index;
+      frameEl.src = frames[index];
+      console.log(`🖼 Frame ${index}:`, frames[index]);
+    }
+
+    requestAnimationFrame(updateFrame);
   }
 
-  scrollEl.addEventListener("scroll", updateFrame);
-  updateFrame(); // initialize
+  // Start animation loop
+  updateFrame();
 };
