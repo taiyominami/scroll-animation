@@ -12,7 +12,7 @@ window.onload = function () {
 "https://freight.cargo.site/t/original/i/V2282347432902876713747971558566/frame_007.jpg",
 "https://freight.cargo.site/t/original/i/O2282347432921323457821681110182/frame_008.jpg",
 "https://freight.cargo.site/t/original/i/E2282347432939770201895390661798/frame_009.jpg",
-"https://freight.cargo.site/t/original/i/S2282347432958216945969100213414/frame_010.jpg"
+"https://freight.cargo.site/t/original/i/S2282347432958216945969100213414/frame_010.jpg",
 "https://freight.cargo.site/t/original/i/H2282347432976663690042809765030/frame_011.jpg",
 "https://freight.cargo.site/t/original/i/A2282347432995110434116519316646/frame_012.jpg",
 "https://freight.cargo.site/t/original/i/P2282347433013557178190228868262/frame_013.jpg",
